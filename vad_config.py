@@ -1,4 +1,3 @@
-# vad_config.py
 from pipecat.audio.vad.silero import SileroVADAnalyzer, VADParams
 from pipecat.transports.base_transport import TransportParams
 from pipecat.audio.turn.smart_turn.local_smart_turn_v3 import LocalSmartTurnAnalyzerV3
@@ -11,10 +10,10 @@ def create_transport_params(using_turn_detection: bool = True):
     """
     # VAD parameters tuned for quicker response
     vad_params = VADParams(
-        confidence=0.8,
+        confidence=0.7,
         start_secs=0.2,
-        stop_secs=0.2 if using_turn_detection else 0.1,
-        min_volume=0.7,
+        stop_secs=0.5 if using_turn_detection else 0.8,
+        min_volume=0.6,
     )
 
     turn_analyzer = None
