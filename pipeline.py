@@ -44,7 +44,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments):
     # Deepgram TTS
     tts = DeepgramTTSService(
         api_key=os.getenv("DEEPGRAM_API_KEY"),  # default model:"aura-2-helena-en"
-        voice="aura-2-andromeda-en",
+        voice="aura-2-helena-en",
         stream=True,
     )
 
@@ -57,6 +57,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments):
                 "You are an AI interviewer conducting a interview for a candidate applying to an AI role. "
                 "Your output will be converted to audio so don't include special characters in your answers. "
                 "Respond to what the user said in a professional and thoughtful way. you are encouraged to generate shorter and more concise answers"
+                "If the user interrupts you, first address their input, then continue your previous answer naturally."
             ),
         },
     ]
@@ -96,8 +97,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments):
                 "role": "system",
                 "content": (
                     "Greet the candidate politely and naturally, and introduce yourself as the interviewer."
-                    "Then, ask candidate to introduce themselves briefly. and then ask the first interview question."
-                    "If the user interrupts you, first address their input, then continue your previous answer naturally."
+                    "Then, ask candidate to introduce themselves, after that start interview in a professional manner."
                 ),
             }
         )

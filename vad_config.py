@@ -11,10 +11,10 @@ def create_transport_params(using_turn_detection: bool = True):
     """
     # VAD parameters tuned for quicker response
     vad_params = VADParams(
-        confidence=0.7,
-        start_secs=0.1,
+        confidence=0.8,
+        start_secs=0.2,
         stop_secs=0.2 if using_turn_detection else 0.1,
-        min_volume=0.6,
+        min_volume=0.7,
     )
 
     turn_analyzer = None
